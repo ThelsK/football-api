@@ -3,7 +3,7 @@ const port = process.env.PORT || 3000
 const appListen = () =>
   app.listen(port, () => console.log(`Listening on :${port}`))
 
-const teamRouter = require("./team/router")
-app.use(teamRouter)
+app.use(require("body-parser").json())
+app.use(require("./team/router"))
 
 appListen()
