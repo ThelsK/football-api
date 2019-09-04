@@ -8,6 +8,18 @@ teamRouter.get("/team", (req, res, next) => {
     .catch(console.error)
 })
 
+teamRouter.get("/team/:id", (req, res, next) => {
+  Team.findByPk(req.params.id)
+    .then(team => {
+      if (team) {
+        res.send(team)
+      } else {
+        res.status(404).end()
+      }
+    })
+    .catch(console.error)
+})
+
 teamRouter.post("/team", (req, res, next) => {
   Team.create(req.body)
     .then(team => res.send(team))
