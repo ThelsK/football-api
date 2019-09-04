@@ -3,9 +3,7 @@ const port = process.env.PORT || 3000
 const appListen = () =>
   app.listen(port, () => console.log(`Listening on :${port}`))
 
-// app.use(require("./routers/studentRouter"))
-// app.use(require("./routers/teacherRouter"))
+app.use(require("./team/router"))
 
-const db = require("./db")
-const Team = require("./team/model")
+
 appListen()
