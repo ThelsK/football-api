@@ -1,7 +1,3 @@
-// ============================================================
-// ========== Set up API
-// ============================================================
-
 const app = require("express")()
 const port = process.env.PORT || 3000
 const appListen = () =>
@@ -10,8 +6,5 @@ const appListen = () =>
 // app.use(require("./routers/studentRouter"))
 // app.use(require("./routers/teacherRouter"))
 
-// ============================================================
-// ========== Initialize
-// ============================================================
-
+const db = require("./db")
 appListen()
