@@ -1,4 +1,6 @@
 const Player = require("./model")
+const Team = require("../team/model")
+Team.hasMany(Player)
 
 const playerRouter = new require("express").Router()
 
@@ -25,5 +27,7 @@ playerRouter.post("/player", (req, res, next) => {
     .then(player => res.send(player))
     .catch(console.error)
 })
+
+
 
 module.exports = playerRouter
