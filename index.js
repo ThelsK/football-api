@@ -7,4 +7,5 @@ const appListen = () =>
 // app.use(require("./routers/teacherRouter"))
 
 const db = require("./db")
+const Team = require("./team/model")
 appListen()
