@@ -6,5 +6,6 @@ const appListen = () =>
 app.use(require("body-parser").json())
 app.use(require("./team/router"))
 app.use(require("./player/router"))
+app.use(require("./city/router"))
 
 appListen()

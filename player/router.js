@@ -1,6 +1,9 @@
 const Player = require("./model")
+const City = require("../city/model")
 const Team = require("../team/model")
-Team.hasMany(Player)
+
+Player.belongsTo(City)
+Player.belongsTo(Team)
 
 const playerRouter = new require("express").Router()
 
@@ -11,7 +14,7 @@ playerRouter.get("/player", (req, res, next) => {
 })
 
 playerRouter.get("/player/:id", (req, res, next) => {
-  Player.findByPk(req.params.id)
+  Player.findByPk(req.params.id, { include: { all: true } })
     .then(player => {
       if (player) {
         res.send(player)
@@ -27,7 +30,5 @@ playerRouter.post("/player", (req, res, next) => {
     .then(player => res.send(player))
     .catch(console.error)
 })
-
-
 
 module.exports = playerRouter

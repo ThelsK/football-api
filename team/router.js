@@ -1,4 +1,9 @@
 const Team = require("./model")
+const City = require("../city/model")
+const Player = require("../player/model")
+
+Team.belongsTo(City)
+Team.hasMany(Player)
 
 const teamRouter = new require("express").Router()
 
@@ -9,7 +14,7 @@ teamRouter.get("/team", (req, res, next) => {
 })
 
 teamRouter.get("/team/:id", (req, res, next) => {
-  Team.findByPk(req.params.id)
+  Team.findByPk(req.params.id, { include: { all: true } })
     .then(team => {
       if (team) {
         res.send(team)
